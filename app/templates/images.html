@@ -7,14 +7,14 @@
     <!-- <link rel="stylesheet" href="../styles/style.css" />
      -->
      <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
-
+     <script src="{{url_for('static', filename='script.js')}}"></script>
     
 </head>
 <body>
     <h1>Please Select Your Image</h1>
     <div class=imageContainer>
         <div class=row>
-            <img class=image onclick="" src="../static/images/image2.jpg" id="image" alt="images">
+            <img class=image onclick="validate()" src="../static/images/image2.jpg" id="image" alt="images">
             <img class=image onclick="" src="../static/images/image2.jpg" id="image" alt="images">
             <img class=image onclick="" src="../static/images/image2.jpg" id="image" alt="images">
         </div>
