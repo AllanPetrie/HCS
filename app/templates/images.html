@@ -2,11 +2,34 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>App</title>
+    <title>Pick an Image</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="css/app.css" />
+    <!-- <link rel="stylesheet" href="../styles/style.css" />
+     -->
+     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+
+    
 </head>
 <body>
-    <h1>Hello!</h1>
+    <h1>This is a title</h1>
+    <div class=imageContainer>
+        <div class=row>
+            <img class=image onclick="" src="../static/images/image2.jpg" id="image" alt="images">
+            <img class=image onclick="" src="../static/images/image2.jpg" id="image" alt="images">
+            <img class=image onclick="" src="../static/images/image2.jpg" id="image" alt="images">
+        </div>
+        <div class=row>
+            <img onclick="" src="../static/images/image2.jpg" id="image" alt="images">
+            <img onclick="" src="../static/images/image2.jpg" id="image" alt="images">
+            <img onclick="" src="../static/images/image2.jpg" id="image" alt="images">
+        </div>
+        <div class=row>
+            <img onclick="" src="../static/images/image2.jpg" id="image" alt="images">
+            <img onclick="" src="../static/images/image2.jpg" id="image" alt="images">
+            <img onclick="" src="../static/images/image2.jpg" id="image" alt="images">
+        </div>
+    </div>
+    
+    
 </body>
 </html>
