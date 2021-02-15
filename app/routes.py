@@ -65,3 +65,7 @@ def authenticatePassword():
             error += " Please try again."
 
         return render_template('login.html', error=error)
+
+@app.route('/imageselect')
+def imageselect():
+    return render_template('gregor.html')
