@@ -11,7 +11,7 @@
     <h1>This is a title</h1>
     <div class=imageContainer>
         <div class=row>
-            <img class=image onclick="" src="../static/images/image2.jpg" id="image" alt="images">  
+            <img class=image onclick="" src="../static/images/image2.jpg" id="image2" alt="images">  
         </div> 
     </div>
 
@@ -20,19 +20,38 @@
 </html>
 
 <script>$(document).ready(function() {
-    var coords = [];
+    var coordssofar = [];
+    var usercorrect = [{50:50}];
 
-
-    $("img").on("click", function(event) {
+    $("#image2").on("click", function(event) {
         var x = event.pageX - this.offsetLeft;
         var y = event.pageY - this.offsetTop;
-        storeCoordinate(x,y,coords)
+        storeCoordinate(x,y,coordssofar);
         // alert("X Coordinate: " + x + " Y Coordinate: " + y);
-        console.log(coords);
+        console.log(coordssofar);
+        
     });
-});
 
-function storeCoordinate(xVal, yVal, array) {
-    array.push({x: xVal, y: yVal});
+function storeCoordinate(xVal, yVal, coordssofar) {
+    coordssofar.push({x: xVal, y: yVal});
+    var arraysMatch = checkequal(usercorrect,coordssofar);
+    console.log(arraysMatch)
+    
 }
+
+function checkequal(coordssofar,usercorrect){
+    if (coordssofar.length !== usercorrect.length) return false;
+
+	// Check if all items exist and are in the same order
+	for (var i = 0; i < coordssofar.length; i++) {
+		if (coordssofar[i] !== usercorrect[i]) return false;
+	}
+
+	// Otherwise, return true
+	return true;
+
+}})
+
 </script>
+
+
