@@ -12,3 +12,9 @@ def images():
 @app.route('/login')
 def index():
     return render_template('login.html')
+
+
+
+@app.route('/imageselect')
+def imageselect():
+    return render_template('gregor.html')
