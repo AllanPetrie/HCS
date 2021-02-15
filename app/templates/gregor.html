@@ -20,10 +20,19 @@
 </html>
 
 <script>$(document).ready(function() {
+    var coords = [];
+
+
     $("img").on("click", function(event) {
         var x = event.pageX - this.offsetLeft;
         var y = event.pageY - this.offsetTop;
-        alert("X Coordinate: " + x + " Y Coordinate: " + y);
+        storeCoordinate(x,y,coords)
+        // alert("X Coordinate: " + x + " Y Coordinate: " + y);
+        console.log(coords);
     });
 });
+
+function storeCoordinate(xVal, yVal, array) {
+    array.push({x: xVal, y: yVal});
+}
 </script>
