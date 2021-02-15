@@ -1,0 +1,20 @@
+.imageContainer{
+   width: 100%;
+   height: fit-content;
+   margin: 0 auto;
+}
+
+.row{
+   height: fit-content;
+   width: 100%;
+   background-color: red;
+}
+
+.image{
+   height: 100px; 
+   width: 100px;
+}
+
+h1{
+   color: green;
+}

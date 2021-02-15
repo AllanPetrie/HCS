@@ -7,6 +7,13 @@ import csv
 VARIANT = 'colours'
 
 @app.route('/')
+@app.route('/index')
+
+
+@app.route('/images')
+def images():
+    return render_template('images.html')
+
 @app.route('/login')
 def index():
     return render_template('login.html')
