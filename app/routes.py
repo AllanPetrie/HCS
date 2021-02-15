@@ -8,31 +8,24 @@ VARIANT = 'colours'
 
 @app.route('/')
 @app.route('/index')
+def index():
+    return render_template('login.html')
+
 
 
 @app.route('/images')
 def images():
     return render_template('images.html')
 
-@app.route('/login')
-def index():
-    return render_template('login.html')
-
 @app.route('/authenticatePassword', methods=['POST'])
 def authenticatePassword():
     
     error = None
+    userfound = False
 
     if request.method == 'POST':
 
         form_data = request.form
-
-        if form_data['username'] == '':
-            error = "No username has been entered."
-        elif form_data['password'] == '':
-            error = "No password has been entered."
-        elif form_data['username'] == '' and form_data['password'] == '':
-            error = "No username or password has been entered."
 
         #very very bad way of handling authetication
         with open('./password_creds.csv') as pwrds:
@@ -43,27 +36,32 @@ def authenticatePassword():
             #iterate over it to find a match
             for line in reader:
                 if line['username'] == form_data['username']:
-                    error = None
+                    userfound = True
                     actual = line['password']
                     entered = form_data['password']
                     if line['password'] == form_data['password']: 
                         
                         #redirect to different pages based on variant
                         if VARIANT == 'colours':
-                            return "colours login"
+                            return redirect(url_for('images'))
                         if VARIANT == 'area':
                             return "area login"
 
                     else:
-                        error = "Sorry, wrong password." 
+                        error = "Wrong password." 
                         break
-                error = "Username not found."
+
+
+        if form_data['username'] == '' and form_data['password'] == '':
+            error = "No username or password has been entered."
+        elif form_data['username'] == '':
+            error = "No username has been entered."
+        elif form_data['password'] == '':
+            error = "No password has been entered."
+        elif not userfound:
+            error = "Username not found."
 
         if error:
             error += " Please try again."
 
-        return redirect(url_for('index'))
-                
-@app.route('/')
-def get_creds():
-    return send_from_directory('/', 'password_creds.csv')
+        return render_template('login.html', error=error)

@@ -9,9 +9,13 @@
 <body>
     <h1>Login</h1>
 
+    {% if error %}
+        <p class="></>error"><strong>Error: </strong></p> {{ error }}
+    {% endif %}
+
     <form action='/authenticatePassword' method="POST">
         <input type="text" id="username" name="username">
-        <input type="text" id="password" name="password"><br/>
+        <input type="password" id="password" name="password"><br/>
         <input type="submit" id="submit" name="submit" value="submit">
     </form>
 
