@@ -17,7 +17,7 @@
                 document.getElementById('username').value = "";
                 document.getElementById('password').value = "";
             } else {
-                //TODO: redirect to image select page
+                window.location.assign('images');
             }
         }
 
@@ -25,7 +25,7 @@
 </head>
 <body>
     <h1>Login</h1>
-
+ 
     <input type="text" id="username" name="username">
     <input type="password" id="password" name="password"><br/>
     <button id="submit" onclick=validate()>Submit</button>
