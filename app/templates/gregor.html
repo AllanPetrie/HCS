@@ -5,9 +5,10 @@
     <title>Pick an Image</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
      <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+     <script src="{{url_for('static', filename='script.js')}}"></script>
     
 </head>
-<body>
+<body onload=changeImage()>
     <h1>This is a title</h1>
     <div class=imageContainer>
         <div class=row>
