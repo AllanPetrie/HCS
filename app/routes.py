@@ -75,6 +75,8 @@ def register_images():
 
 @app.route('/register_points')
 def register_points():
+    return render_template('register_points.html')
+
 @app.route('/addUserAccount', methods=['POST'])
 def addUserAccount():
     

@@ -11,7 +11,10 @@
         
         function addUserImage(id) {
             if (confirm("Use this as your image?")) {
-                sessionStorage.setItem('imageId', id);
+                img_src = document.getElementById(id).src;
+                new_src = "..".concat(img_src);
+                sessionStorage.setItem('image', new_src);
+                window.location.assign('register_points');
                 //TODO: redirect to point selection page
             }
         }
