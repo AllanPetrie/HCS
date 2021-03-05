@@ -1,9 +1,57 @@
 <!DOCTYPE HTML>
 <html>
+
 <head>
+    <script>
+        function validation() {
+            valid_guesses = []
+            if (usercorrect.length != coordssofar.length) {
+                return false
+
+            }
+            else {
+                console.log(usercorrect)
+                console.log(coordssofar)
+                for (var i = 0; i < usercorrect.length; i++) {
+                    var correct_x = usercorrect[i].x;
+                    var correct_y = usercorrect[i].y;
+
+                    var user_guess_x = coordssofar[i].x;
+                    var user_guess_y = coordssofar[i].y;
+
+                    var abs_x = Math.abs(correct_x - user_guess_x);
+                    var abs_y = Math.abs(correct_y - user_guess_y);
+
+                    if ((abs_x < 5) && (abs_y < 5)) {
+                        valid_guesses.push(true);
+                    }
+                    else {
+                        valid_guesses.push(false);
+                    }
+                }
+                if (valid_guesses.includes(false)) {
+                    
+                    return false
+                }
+                else {
+                    alert('welcome in buddy')
+                    window.location = "colours";
+
+                }
+
+            }
+        }
+
+        function reset() {
+            coordssofar = [];
+            clicked_number = 0;
+        }
+
+    </script>
     <meta charset="utf-8" />
     <title>Pick an Image</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+<<<<<<< Updated upstream
      <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
      <script src="{{url_for('static', filename='script.js')}}"></script>
     
@@ -14,12 +62,32 @@
         <div class=row>
             <img class=image onclick="" src="../static/images/image2" id="image2" alt="not working">  
         </div> 
+=======
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+
+</head>
+
+<body>
+    <h1>This is a title</h1>
+    <div class=imageContainer>
+        <div class=row>
+            <img class=image onclick="" src="../static/images/image2.jpg" id="image2" alt="images">
+        </div>
+    </div>
+    <div>
+        <button onclick="validation()">Click me</button>
+
+    </div>
+    <div>
+        <button onclick="reset()" value="text here5" style="width: 139px">Reset Selection Points</button>
+>>>>>>> Stashed changes
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 </body>
 </html>
 
+<<<<<<< Updated upstream
 <script>$(document).ready(function() {
     var coordssofar = [];
     var usercorrect = [{50:50},{50:50},{50:50}];
@@ -51,5 +119,26 @@ function checkequal(coordssofar,usercorrect){
 	return true;
 }})
 </script>
+=======
+>>>>>>> Stashed changes
+
+<script>$(document).ready(function () {
+        coordssofar = [];
+        usercorrect = [{ 'x': 9, 'y': 166 }, { 'x': 9, 'y': 166 }, { 'x': 9, 'y': 166 }]
+        clicks_so_far = 0;
+        click_results = []
+        max_clicks = 5
 
 
+        $("#image2").on("click", function (event) {
+            var x = event.pageX - this.offsetLeft;
+            var y = event.pageY - this.offsetTop;
+            storeCoordinate(x, y);
+
+        });
+
+        function storeCoordinate(xVal, yVal) {
+            coordssofar.push({ x: xVal, y: yVal });
+        }
+    })
+</script>

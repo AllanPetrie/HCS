@@ -116,3 +116,8 @@ def addUserAccount():
 @app.route('/imageselect')
 def imageselect():
     return render_template('gregor.html')
+
+
+@app.route('/colours')
+def colours():
+    return render_template('colours.html')
