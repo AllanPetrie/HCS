@@ -35,6 +35,7 @@
                 }
                 else {
                     alert('welcome in buddy')
+                    alert(valid_guesses)
                     window.location = "colours";
 
                 }
@@ -74,36 +75,6 @@
 </body>
 </html>
 
-<script>$(document).ready(function() {
-    var coordssofar = [];
-    var usercorrect = [{50:50},{50:50},{50:50}];
-
-    $("#image2").on("click", function(event) {
-        var x = event.pageX - this.offsetLeft;
-        var y = event.pageY - this.offsetTop;
-        storeCoordinate(x,y,coordssofar);
-        // alert("X Coordinate: " + x + " Y Coordinate: " + y);
-        console.log(coordssofar);
-        
-    });
-
-function storeCoordinate(xVal, yVal, coordssofar) {
-    coordssofar.push({x: xVal, y: yVal});
-    var arraysMatch = checkequal(usercorrect,coordssofar);
-    console.log(arraysMatch)
-    
-}
-
-function checkequal(coordssofar,usercorrect){
-    if (coordssofar.length !== usercorrect.length) return false;
-	// Check if all items exist and are in the same order
-	for (var i = 0; i < coordssofar.length; i++) {
-		if (coordssofar[i] !== usercorrect[i]) return false;
-	}
-	// Otherwise, return true
-	return true;
-}})
-</script>
 
 <script>$(document).ready(function () {
         coordssofar = [];
