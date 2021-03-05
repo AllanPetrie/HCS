@@ -38,10 +38,9 @@
                     window.location = "colours";
 
                 }
-
             }
         }
-
+ 
         function reset() {
             coordssofar = [];
             clicked_number = 0;
@@ -61,6 +60,14 @@
         <div class=row>
             <img class=image onclick="" src="../static/images/image2" id="image2" alt="not working">  
         </div> 
+    </div>
+
+    <div>
+        <button onclick="validation()">Submit Password</button>
+    </div>
+
+    <div>
+        <button onclick="reset()">Reset attempt</button>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
