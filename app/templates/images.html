@@ -7,15 +7,15 @@
     <!-- <link rel="stylesheet" href="../styles/style.css" />
      -->
      <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
-
+     <script src="{{url_for('static', filename='script.js')}}"></script>
     
 </head>
 <body>
-    <!-- <h1>This is a title</h1> -->
+    <h1>Please Select Your Image</h1>
     <div class=imageContainer>
         <div class=row>
-            <img class=image onclick="" src="../static/images/image2.jpg" id="image" alt="images">
-            <img class=image onclick="" src="../static/images/image2.jpg" id="image" alt="images">
+            <img class=image onclick="validate(this.id)" src="../static/images/image3.jpg" id="image1" alt="images">
+            <img class=image onclick="" src="../static/images/image2.jpg" id="changed_image" alt="images">
             <img class=image onclick="" src="../static/images/image2.jpg" id="image" alt="images">
         </div>
         <div class=row>
