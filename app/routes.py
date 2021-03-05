@@ -9,15 +9,16 @@ VARIANT = 'colours'
 @app.route('/')
 @app.route('/index')
 def index():
-    return render_template('login.html')
+    return render_template('register.html')
 
 @app.route('/images')
 def images():
     return render_template('images.html')
 
+#this whole function is useless. Delete
 @app.route('/authenticatePassword', methods=['POST'])
 def authenticatePassword():
-    
+   
     error = None
     userfound = False
 
@@ -49,7 +50,6 @@ def authenticatePassword():
                         error = "Wrong password." 
                         break
 
-
         if form_data['username'] == '' and form_data['password'] == '':
             error = "No username or password has been entered."
         elif form_data['username'] == '':
@@ -61,13 +61,20 @@ def authenticatePassword():
 
         if error:
             error += " Please try again."
-
+        
+        session['username'] = form_data['username']
         return render_template('login.html', error=error)
 
 @app.route('/register')
 def register():
     return render_template('register.html')
 
+@app.route('/register_images')
+def register_images():
+    return render_template('register_images.html')
+
+@app.route('/register_points')
+def register_points():
 @app.route('/addUserAccount', methods=['POST'])
 def addUserAccount():
     
@@ -99,8 +106,10 @@ def addUserAccount():
             writer = csv.writer(pwrds)
             writer.writerow([uname, form_data['password']]) 
 
-        return "SOMETHING HAPPENED"
-        
+        session['username'] = uname
+        session['password'] = form_data['password']
+        return render_template('register_images.html')
+
         
 @app.route('/imageselect')
 def imageselect():

@@ -4,6 +4,29 @@
     <meta charset="utf-8" />
     <title>App</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <script type='text/javascript'>
+        
+        function addUser() {
+            
+            //get values from text inputs
+            password = document.getElementById('password').value
+            confirm_password = document.getElementById('confirm').value
+            
+            //check if passwords match
+            if (password == confirm_password) {
+                sessionStorage.setItem('username', document.getElementById('username').value);
+                sessionStorage.setItem('password', document.getElementById('password').value);
+                window.location.assign('register_images')
+            } else {
+                //if they don't, let the user know and clear text boxes
+                alert("Passwords don't match. Please try again.")
+                document.getElementById('password').value = ""
+                document.getElementById('confirm').value = ""
+            }
+        }
+
+    </script>
 </head>
 <body>
     <h1>Create Account</h1>
@@ -14,15 +37,14 @@
 
 
     <!-- Stage 1: create username and password -->
-    <form action='/addUserAccount' method='POST'>
         <label for="username">Create a username:</label>
         <input type="text" id="username" name="username"></br>
         <label for="password">Create a password:</label>
         <input type="password" id="password" name="password"><br/>
         <label for="password">Confirm password:</label>
-        <input type="password" id="password" name="confirm"><br/>
-        <input type="submit" id="submitpwrd" value="Submit"></>
-    </form>
+        <input type="password" id="confirm" name="confirm"><br/>
+        <button value="submit" onclick=addUser()>Submit</button>
+        <!--        <input type="submit" id="submitpwrd" value="Submit"></> --></>
 
     <!-- Stage 2: display grid of images, ask user to select one -->
     <!-- Stage 3: if image areas, display blown up image and ask user to select between n and m points-->

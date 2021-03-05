@@ -5,19 +5,30 @@
     <title>Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!--<link rel="stylesheet" href="style.css" />i-->
+    <script type='text/javascript'>
+        
+        function validate() {
+            uname = document.getElementById('username').value;
+            pword = document.getElementById('password').value;
+            
+            if (uname != sessionStorage.getItem('username')
+                || pword != sessionStorage.getItem('password')){
+                alert("Invalid login details. Please try again.");
+                document.getElementById('username').value = "";
+                document.getElementById('password').value = "";
+            } else {
+                //TODO: redirect to image select page
+            }
+        }
+
+    </script>
 </head>
 <body>
     <h1>Login</h1>
 
-    {% if error %}
-        <p class="></>error"><strong>Error: </strong></p> {{ error }}
-    {% endif %}
-
-    <form action='/authenticatePassword' method="POST">
-        <input type="text" id="username" name="username">
-        <input type="password" id="password" name="password"><br/>
-        <input type="submit" id="submit" name="submit" value="submit">
-    </form>
+    <input type="text" id="username" name="username">
+    <input type="password" id="password" name="password"><br/>
+    <button id="submit" onclick=validate()>Submit</button>
 
 </body>
 </html>

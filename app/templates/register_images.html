@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Pick an Image</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- <link rel="stylesheet" href="../styles/style.css" />
+     -->
+     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+     <script type='text/javascript'>
+        
+        function addUserImage(id) {
+            if (confirm("Use this as your image?")) {
+                sessionStorage.setItem('imageId', id);
+                //TODO: redirect to point selection page
+            }
+        }
+     
+     </script>
+    
+</head>
+<body>
+    <h1>Select Your Password Image</h1>
+    <div class=imageContainer>
+        <div class=row>
+            <img class=image onclick="addUserImage(this.id)" src="../static/images/image3.jpg" id="image1" alt="images">
+            <img class=image onclick="addUserImage(this.id)" src="../static/images/image2.jpg" id="image2" alt="images">
+            <img class=image onclick="addUserImage(this.id)" src="../static/images/image2.jpg" id="image3" alt="images">
+        </div>
+        <div class=row>
+            <img class=image onclick="addUserImage(this.id)" src="../static/images/image2.jpg" id="image4" alt="images">
+            <img class=image onclick="addUserImage(this.id)" src="../static/images/image2.jpg" id="image5" alt="images">
+            <img class=image onclick="addUserImage(this.id)" src="../static/images/image2.jpg" id="image6" alt="images">
+        </div>
+        <div class=row>
+            <img class=image onclick="addUserImage(this.id)" src="../static/images/image2.jpg" id="image7" alt="images">
+            <img class=image onclick="addUserImage(this.id)" src="../static/images/image2.jpg" id="image8" alt="images">
+            <img class=image onclick="addUserImage(this.id)" src="../static/images/image2.jpg" id="image9" alt="images">
+        </div>
+    </div>
+    
+    
+</body>
+</html>
