@@ -11,8 +11,6 @@ VARIANT = 'colours'
 def index():
     return render_template('login.html')
 
-
-
 @app.route('/images')
 def images():
     return render_template('images.html')
@@ -66,6 +64,44 @@ def authenticatePassword():
 
         return render_template('login.html', error=error)
 
+@app.route('/register')
+def register():
+    return render_template('register.html')
+
+@app.route('/addUserAccount', methods=['POST'])
+def addUserAccount():
+    
+    error = None
+    
+    if request.method == 'POST':
+
+        form_data = request.form
+
+        #check account doesn't already exist
+        uname = form_data['username']
+        with open('./password_creds.csv') as pwrds:
+
+            reader = csv.DictReader(pwrds)  
+            for line in reader:
+                if line['username'] == uname:
+                    error = "Account with username " + uname + " already exists."
+                    return render_template('register.html', error=error)
+
+
+            #check that passwords match
+            if form_data['password'] != form_data['confirm']:
+                error = "Passwords don't match."
+                return render_template('register.html', error=error)
+            
+            #now add username and password to ""database""
+
+        with open('./password_creds.csv', 'a') as pwrds:
+            writer = csv.writer(pwrds)
+            writer.writerow([uname, form_data['password']]) 
+
+        return "SOMETHING HAPPENED"
+        
+        
 @app.route('/imageselect')
 def imageselect():
     return render_template('gregor.html')
