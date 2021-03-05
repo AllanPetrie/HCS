@@ -4,11 +4,20 @@
 <head>
     <script>
         function validation() {
-            valid_guesses = []
-            if (usercorrect.length != coordssofar.length) {
-                return false
+            if (attempts_left < 1){
+                alert('Max Attempts')
+             }
+             
+             else if (usercorrect.length != coordssofar.length && password_attempts <3) {
+                valid_guesses = [];
+                attempts_left = parseInt(3) - parseInt(password_attempts)
+                alert('Wrong password : You have ' + attempts_left + ' attempts left')
+                password_attempts++;
+                attempts_left--;
+                reset()
 
             }
+
             else {
                 console.log(usercorrect)
                 console.log(coordssofar)
@@ -56,10 +65,10 @@
     
 </head>
 <body onload=changeImage()>
-    <h1>This is a title</h1>
+    <h1>Please select your points on the image below</h1>
     <div class=imageContainer>
         <div class=row>
-            <img class=image onclick="" src="../static/images/image2" id="image2" alt="not working">  
+            <img class=image onclick="" src="" id="image2" alt="not working" >  
         </div> 
     </div>
 
@@ -80,8 +89,10 @@
         coordssofar = [];
         usercorrect = [{ 'x': 9, 'y': 166 }, { 'x': 9, 'y': 166 }, { 'x': 9, 'y': 166 }]
         clicks_so_far = 0;
-        click_results = []
-        max_clicks = 5
+        click_results = [];
+        max_clicks = 5;
+        password_attempts = 0;
+        attempts_left = 3
 
 
         $("#image2").on("click", function (event) {
