@@ -1,6 +1,26 @@
 <!DOCTYPE HTML>
 <html>
+
 <head>
+    <script>
+
+        function validation() {
+            
+            if (coordssofar.length < 3) {
+                alert("You haven't selected enough points on the image.")
+            } else {
+                sessionStorage.setItem('points', coordssofar);
+                window.location = 'login';
+            }
+
+        }
+
+        function reset() {
+            coordssofar = [];
+            clicked_number = 0;
+        }
+
+    </script>
     <meta charset="utf-8" />
     <title>Pick an Image</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -9,69 +29,46 @@
     
 </head>
 <body onload=changeImage()>
-    <h1>Select Between 3 and 5 Points on Your Image</h1>
-    <!-- TODO: explain why points are being selected -->
-
+    <h1>This is a title</h1>
     <div class=imageContainer>
         <div class=row>
-            <img class=image onclick="" src="../static/images/image2.jpg" id="image2" alt="not working">  
+            <img class=image onclick="" src="../static/images/image2" id="image2" alt="not working">  
         </div> 
-        <button id="submit" onclick='validatePoints()'>Submit</button>
-        <button id="clear" onclick='clearSelection()'>Clear Selected Points</button>
+    </div>
+
+    <div>
+        <button onclick="validation()">Submit Password</button>
+    </div>
+
+    <div>
+        <button onclick="reset()">Reset attempt</button>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 </body>
 </html>
 
-<script>$(document).ready(function() {
-    var coords = [];
-    var minPoints = 3;
-    var maxPoints = 5;
 
-    $("#image2").on("click", function(event) {
-        var x = event.pageX - this.offsetLeft;
-        var y = event.pageY - this.offsetTop;
-        storeCoordinate(x,y,coords);
-        // alert("X Coordinate: " + x + " Y Coordinate: " + y);
-        console.log(coords);
-        
-    });
+<script>$(document).ready(function () {
+        coordssofar = [];
+        clicks_so_far = 0;
+        click_results = [];
+        max_clicks = 5
 
-function storeCoordinate(xVal, yVal, coords) {
 
-    //check to see if user has exceeded number of points.
-    if (coords.length > 5) {
-        alert("You've selected more than five points! Either clear points and start again or use the points that you've selected.");
-    } else {
-        coords.push({x: xVal, y: yVal});
-        sessionStorage.setItem('points', coords);
-    }
+        $("#image2").on("click", function (event) {
+            var x = event.pageX - this.offsetLeft;
+            var y = event.pageY - this.offsetTop;
+            storeCoordinate(x, y);
 
-}
+        });
 
-function checkequal(coords,usercorrect) {
-    if (coords.length !== usercorrect.length) return false;
-	// Check if all items exist and are in the same order
-	for (var i = 0; i < coords.length; i++) {
-		if (coords[i] !== usercorrect[i]) return false;
-	}
-	// Otherwise, return true
-	return true;
-}})
-
-function validatePoints() {
-    points = sessionStorage.getItem('points');
-    if (points.length < 3) {
-        alert("You need to select at least 3 points. You have only selected " + points.length);
-    }
-    //redirect to next page.
-}
-
-function clearSelection() {
-    sessionStorage.setItem('points', []);
-}
-
+        function storeCoordinate(xVal, yVal) {
+            if (coordssofar.length > 5) {
+                alert("You've already selected 5 points. Please either reset your attempt or submit.");
+            } else {
+                coordssofar.push({ x: xVal, y: yVal });
+            }
+        }
+    })
 </script>
-
-

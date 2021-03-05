@@ -11,6 +11,10 @@ VARIANT = 'colours'
 def index():
     return render_template('register.html')
 
+@app.route('/login')
+def login():
+    return render_template('login.html')
+
 @app.route('/images')
 def images():
     return render_template('images.html')
