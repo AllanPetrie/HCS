@@ -13,6 +13,10 @@ VARIANT = 'colours'
 def index():
     return render_template('register.html')
 
+@app.route('/login')
+def login():
+    return render_template('login.html')
+
 @app.route('/images')
 def images():
     images = os.listdir(os.path.join(app.static_folder, "images"))
@@ -127,6 +131,4 @@ def colours():
     return render_template('colours.html')
 
 
-@app.route('/login')
-def login():
-    return render_template('login.html')
+

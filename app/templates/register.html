@@ -17,12 +17,12 @@
             if (password == confirm_password) {
                 sessionStorage.setItem('username', document.getElementById('username').value);
                 sessionStorage.setItem('password', document.getElementById('password').value);
-                window.location.assign('register_images')
+                window.location.assign('register_images');
             } else {
                 //if they don't, let the user know and clear text boxes
-                alert("Passwords don't match. Please try again.")
-                document.getElementById('password').value = ""
-                document.getElementById('confirm').value = ""
+                alert("Passwords don't match. Please try again.");
+                document.getElementById('password').value = "";
+                document.getElementById('confirm').value = "";
             }
         }
 
