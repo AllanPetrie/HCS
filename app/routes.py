@@ -2,6 +2,8 @@ from app import app
 from flask import render_template, request, send_from_directory, flash, redirect, url_for
 import sys
 import csv
+import os
+import random
 
 #variants can either be colours or areas
 VARIANT = 'colours'
@@ -17,7 +19,9 @@ def login():
 
 @app.route('/images')
 def images():
-    return render_template('images.html')
+    images = os.listdir(os.path.join(app.static_folder, "images"))
+    random.shuffle(images)
+    return render_template('images.html',images=images)
 
 #this whole function is useless. Delete
 @app.route('/authenticatePassword', methods=['POST'])
@@ -125,3 +129,6 @@ def imageselect():
 @app.route('/colours')
 def colours():
     return render_template('colours.html')
+
+
+

@@ -1,5 +1,5 @@
 function validate(id){
-    
+    console.log(id)
     img_src = document.getElementById(id).src;
     img_src = img_src.slice(-25);
 
