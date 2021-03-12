@@ -79,7 +79,9 @@ def register():
 
 @app.route('/register_images')
 def register_images():
-    return render_template('register_images.html')
+    images = os.listdir(os.path.join(app.static_folder, "images"))
+    random.shuffle(images)
+    return render_template('register_images.html',images=images)
 
 @app.route('/register_points')
 def register_points():

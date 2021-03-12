@@ -24,23 +24,13 @@
 <body>
     <h1>Select Your Password Image</h1>
     <div class=imageContainer>
-        <div class=row>
-            <img class=image onclick="addUserImage(this.id)" src="../static/images/image3.jpg" id="image1" alt="images">
-            <img class=image onclick="addUserImage(this.id)" src="../static/images/image2.jpg" id="image2" alt="images">
-            <img class=image onclick="addUserImage(this.id)" src="../static/images/image2.jpg" id="image3" alt="images">
+        <section class="row">
+            {% for indImage in images %}
+            <section class="col-md-4 col-sm-6">
+                <img class=image onclick="addUserImage(this.id)" src="{{ url_for('static', filename='images/' + indImage) }}" id= {{ indImage }} alt="images">
+            </section>
+            {% endfor %}
+        </section>
         </div>
-        <div class=row>
-            <img class=image onclick="addUserImage(this.id)" src="../static/images/image2.jpg" id="image4" alt="images">
-            <img class=image onclick="addUserImage(this.id)" src="../static/images/image2.jpg" id="image5" alt="images">
-            <img class=image onclick="addUserImage(this.id)" src="../static/images/image2.jpg" id="image6" alt="images">
-        </div>
-        <div class=row>
-            <img class=image onclick="addUserImage(this.id)" src="../static/images/image2.jpg" id="image7" alt="images">
-            <img class=image onclick="addUserImage(this.id)" src="../static/images/image2.jpg" id="image8" alt="images">
-            <img class=image onclick="addUserImage(this.id)" src="../static/images/image2.jpg" id="image9" alt="images">
-        </div>
-    </div>
-    
-    
 </body>
 </html>

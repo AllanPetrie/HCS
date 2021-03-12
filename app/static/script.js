@@ -5,7 +5,9 @@ function validate(id){
 
     new_src = "..".concat(img_src);
 
-    actual_image = sessionStorage.getItem("image", new_src);
+    actual_image = sessionStorage.getItem("image");
+    sessionStorage.setItem("selectedImage", new_src);
+    
     // window.open(img_src);
     // window.open(img_src),'Image','width=largeImage.stylewidth,height=largeImage.style.height,resizable=1');
     
@@ -22,14 +24,10 @@ function validate(id){
 }
 
 function changeImage(){
-    console.log("In next function");
-    
-    src = sessionStorage.getItem("image");
+    src = sessionStorage.getItem("selectedImage");
     console.log(src);
     image = document.getElementById("image2");
     image.src = src;
 }
 
-// function change_image(src){
 
-// }

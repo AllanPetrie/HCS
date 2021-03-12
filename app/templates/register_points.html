@@ -9,7 +9,7 @@
             if (coordssofar.length < 3) {
                 alert("You haven't selected enough points on the image.")
             } else {
-                sessionStorage.setItem('points', coordssofar);
+                sessionStorage.setItem('points', JSON.stringify(coordssofar));
                 window.location = 'login';
             }
 
@@ -20,6 +20,13 @@
             clicked_number = 0;
         }
 
+        function registerChangeImage(){
+            src = sessionStorage.getItem("image");
+            console.log(src);
+            image = document.getElementById("image2");
+            image.src = src;
+        }
+
     </script>
     <meta charset="utf-8" />
     <title>Pick an Image</title>
@@ -28,11 +35,11 @@
      <script src="{{url_for('static', filename='script.js')}}"></script>
     
 </head>
-<body onload=changeImage()>
+<body onload=registerChangeImage()>
     <h1>This is a title</h1>
     <div class=imageContainer>
         <div class=row>
-            <img class=image onclick="" src="../static/images/image2" id="image2" alt="not working">  
+            <img class=image onclick="" src="../static/images/imagea.gif" id="image2" alt=":-(">  
         </div> 
     </div>
 

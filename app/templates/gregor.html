@@ -5,11 +5,10 @@
     <script>
         function validation() {
             if (attempts_left < 1){
-                alert('Max Attempts')
+                alert('Max Attempts');
              }
              
              else if (usercorrect.length != coordssofar.length && password_attempts <3) {
-                valid_guesses = [];
                 attempts_left = parseInt(3) - parseInt(password_attempts)
                 alert('Wrong password : You have ' + attempts_left + ' attempts left')
                 password_attempts++;
@@ -19,8 +18,6 @@
             }
 
             else {
-                console.log(usercorrect)
-                console.log(coordssofar)
                 for (var i = 0; i < usercorrect.length; i++) {
                     var correct_x = usercorrect[i].x;
                     var correct_y = usercorrect[i].y;
@@ -31,22 +28,20 @@
                     var abs_x = Math.abs(correct_x - user_guess_x);
                     var abs_y = Math.abs(correct_y - user_guess_y);
 
-                    if ((abs_x < 5) && (abs_y < 5)) {
+                    if ((abs_x <= 7) && (abs_y <= 7)) {
                         valid_guesses.push(true);
                     }
                     else {
                         valid_guesses.push(false);
                     }
                 }
-                if (valid_guesses.includes(false)) {
-                    
-                    return false
-                }
-                else {
-                    alert('welcome in buddy')
-                    alert(valid_guesses)
-                    window.location = "colours";
 
+                var correctImg = sessionStorage.getItem('correctImage'); 
+                if (!valid_guesses.includes(false) && correctImg) {
+                    alert('You have successfully logged in!')
+                } else {
+                    console.log("oopsies");
+                    return false
                 }
             }
         }
@@ -87,7 +82,8 @@
 
 <script>$(document).ready(function () {
         coordssofar = [];
-        usercorrect = [{ 'x': 9, 'y': 166 }, { 'x': 9, 'y': 166 }, { 'x': 9, 'y': 166 }]
+        valid_guesses = [];
+        usercorrect = JSON.parse(sessionStorage.getItem('points'));
         clicks_so_far = 0;
         click_results = [];
         max_clicks = 5;
