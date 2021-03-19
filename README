@@ -1,0 +1,7 @@
+To Run:
+
+1) Clone github
+2) navigate to root directory
+3) run "pip install -r "requirements.txt""
+4) run "flask run" in terminal
+5) Click the localhost link in terminal
